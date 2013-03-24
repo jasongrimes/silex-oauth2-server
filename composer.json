@@ -1,0 +1,14 @@
+{
+    "name": "jasongrimes/silex-oauth2-server",
+    "description": "A Silex service provider for implementing an OAuth 2 server, using the lncd/OAuth2 library.",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/jasongrimes/silex-oauth2-server"
+        }
+    ],
+
+    "require": {
+        "lncd/OAuth2": "*" 
+    }
+}
