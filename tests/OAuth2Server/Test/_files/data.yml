@@ -1,0 +1,9 @@
+# This dataset doesn't actually load any data. Data is explicitly inserted by the tests that need it.
+#
+# The table names are listed here so PHPUnit truncates them before each test.
+
+oauth_clients:
+oauth_client_endpoints:
+oauth_scopes:
+oauth_sessions:
+
