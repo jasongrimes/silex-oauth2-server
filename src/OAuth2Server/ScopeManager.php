@@ -2,6 +2,7 @@
 
 namespace OAuth2Server;
 
+use Doctrine\DBAL\Connection;
 use PDO;
 use OAuth2\Storage\ScopeInterface;
 
@@ -10,9 +11,9 @@ class ScopeManager implements ScopeInterface
     /** @var PDO */
     protected $conn;
 
-    public function __construct(PDO $conn)
+    public function __construct(Connection $conn)
     {
-        $this->conn = $conn;
+        $this->conn = $conn->getWrappedConnection();
     }
 
     /**

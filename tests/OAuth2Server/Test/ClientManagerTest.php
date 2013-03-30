@@ -3,6 +3,7 @@
 namespace OAuth2Server\Test;
 
 use OAuth2Server\ClientManager;
+use Doctrine\DBAL\DriverManager;
 
 class ClientManagerTest extends AbstractDbTestCase
 {
@@ -11,7 +12,8 @@ class ClientManagerTest extends AbstractDbTestCase
 
     public function setUp()
     {
-        $this->cm = new ClientManager($this->getPdo());
+        $dbal = DriverManager::getConnection(array('pdo' => $this->getPdo()));
+        $this->cm = new ClientManager($dbal);
 
         parent::setUp();
     }

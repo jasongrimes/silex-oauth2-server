@@ -5,6 +5,7 @@ namespace OAuth2Server\Test;
 use OAuth2Server\SessionManager;
 use OAuth2\Util\SecureKey;
 use PDO;
+use Doctrine\DBAL\DriverManager;
 
 class SessionManagerTest extends AbstractDbTestCase
 {
@@ -13,7 +14,8 @@ class SessionManagerTest extends AbstractDbTestCase
 
     public function setUp()
     {
-        $this->sm = new SessionManager($this->getPdo());
+        $dbal = DriverManager::getConnection(array('pdo' => $this->getPdo()));
+        $this->sm = new SessionManager($dbal);
 
         parent::setUp();
     }

@@ -3,6 +3,7 @@
 namespace OAuth2Server\Test;
 
 use OAuth2Server\ScopeManager;
+use Doctrine\DBAL\DriverManager;
 
 class ScopeManagerTest extends AbstractDbTestCase
 {
@@ -11,7 +12,8 @@ class ScopeManagerTest extends AbstractDbTestCase
 
     public function setUp()
     {
-        $this->sm = new ScopeManager($this->getPdo());
+        $dbal = DriverManager::getConnection(array('pdo' => $this->getPdo()));
+        $this->sm = new ScopeManager($dbal);
 
         parent::setUp();
     }

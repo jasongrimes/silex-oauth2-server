@@ -23,13 +23,13 @@ class OAuth2ServerProvider implements ServiceProviderInterface
     public function register(Application $app)
     {
         $app['oauth2.session_manager'] = $app->share(function() use ($app) {
-            return new SessionManager($app['oauth2.config.pdo']);
+            return new SessionManager($app['db']);
         });
         $app['oauth2.client_manager'] = $app->share(function() use ($app) {
-            return new ClientManager($app['oauth2.config.pdo']);
+            return new ClientManager($app['db']);
         });
         $app['oauth2.scope_manager'] = $app->share(function() use ($app) {
-            return new ScopeManager($app['oauth2.config.pdo']);
+            return new ScopeManager($app['db']);
         });
         $app['oauth2.resource_server'] = $app->share(function() use ($app) {
             return new ResourceServer($app['oauth2.session_manager']);
