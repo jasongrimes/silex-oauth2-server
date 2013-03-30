@@ -10,7 +10,8 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "lncd/OAuth2": "1.*"
+        "lncd/OAuth2": "1.*",
+        "doctrine/dbal": "2.2.*"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
