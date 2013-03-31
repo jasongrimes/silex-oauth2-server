@@ -48,7 +48,7 @@ class ClientManager implements ClientInterface
         $params = array(':clientId' => $clientId);
 
         if ($clientSecret) {
-            $sql .= 'AND client_secret = :clientSecret ';
+            $sql .= 'AND secret = :clientSecret ';
             $params[':clientSecret'] = $clientSecret;
         }
 
