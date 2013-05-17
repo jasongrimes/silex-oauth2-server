@@ -1,4 +1,6 @@
-OAuth 2 server Silex service provider
+Silex OAuth 2 server service provider
 =====================================
 
-A Silex service provider for implementing an OAuth 2 server, using the [lncd/OAuth2](https://github.com/lncd/OAuth2) library.
+A Silex service provider for implementing an OAuth 2 server, based on the Friends of Symfony [FOSOAuthServerBundle](https://github.com/FriendsOfSymfony/FOSOAuthServerBundle) for Symfony.
+
+
