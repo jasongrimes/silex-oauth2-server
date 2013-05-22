@@ -4,6 +4,11 @@
 
 oauth_clients:
 oauth_client_endpoints:
-oauth_scopes:
 oauth_sessions:
-
+oauth_session_access_tokens:
+oauth_session_authcodes:
+oauth_session_redirects:
+oauth_session_refresh_tokens:
+oauth_scopes:
+oauth_session_token_scopes:
+oauth_session_authcode_scopes:

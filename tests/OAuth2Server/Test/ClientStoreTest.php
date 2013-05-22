@@ -2,18 +2,16 @@
 
 namespace OAuth2Server\Test;
 
-use OAuth2Server\ClientManager;
-use Doctrine\DBAL\DriverManager;
+use OAuth2Server\Storage\ClientStore;
 
-class ClientManagerTest extends AbstractDbTestCase
+class ClientStoreTest extends AbstractDbTestCase
 {
-    /** @var ClientManager */
-    protected $cm;
+    /** @var ClientStore */
+    protected $store;
 
     public function setUp()
     {
-        $dbal = DriverManager::getConnection(array('pdo' => $this->getPdo()));
-        $this->cm = new ClientManager($dbal);
+        $this->store = new ClientStore($this->getDbal());
 
         parent::setUp();
     }
@@ -33,21 +31,21 @@ class ClientManagerTest extends AbstractDbTestCase
 
         // Client ID & secret.
         $this->assertEquals(array('client_id' => $id, 'client_secret' => $secret, 'name' => $name),
-            $this->cm->getClient($id, $secret));
+            $this->store->getClient($id, $secret));
 
         // Client ID & redirect URI, also returns redirect URI.
         $this->assertEquals(array('client_id' => $id, 'client_secret' => $secret, 'name' => $name, 'redirect_uri' => $redirectUri),
-            $this->cm->getClient($id, null, $redirectUri));
+            $this->store->getClient($id, null, $redirectUri));
 
         // Client ID, secret, & redirect URI also returns redirect URI.
         $this->assertEquals(array('client_id' => $id, 'client_secret' => $secret, 'name' => $name, 'redirect_uri' => $redirectUri),
-            $this->cm->getClient($id, $secret, $redirectUri));
+            $this->store->getClient($id, $secret, $redirectUri));
 
         // Returns false if any params are invalid.
-        $this->assertFalse($this->cm->getClient());
-        $this->assertFalse($this->cm->getClient('invalid-id'));
-        $this->assertFalse($this->cm->getClient($id, 'invalid-secret'));
-        $this->assertFalse($this->cm->getClient($id, null, 'invalid-redirect-uri'));
-        $this->assertFalse($this->cm->getClient($id, $secret, 'invalid-redirect-uri'));
+        $this->assertFalse($this->store->getClient(null));
+        $this->assertFalse($this->store->getClient('invalid-id'));
+        $this->assertFalse($this->store->getClient($id, 'invalid-secret'));
+        $this->assertFalse($this->store->getClient($id, null, 'invalid-redirect-uri'));
+        $this->assertFalse($this->store->getClient($id, $secret, 'invalid-redirect-uri'));
     }
 }

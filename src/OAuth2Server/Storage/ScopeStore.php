@@ -1,19 +1,18 @@
 <?php
 
-namespace OAuth2Server;
+namespace OAuth2Server\Storage;
 
 use Doctrine\DBAL\Connection;
-use PDO;
-use OAuth2\Storage\ScopeInterface;
+use League\OAuth2\Server\Storage\ScopeInterface;
 
-class ScopeManager implements ScopeInterface
+class ScopeStore implements ScopeInterface
 {
-    /** @var PDO */
+    /** @var Connection */
     protected $conn;
 
     public function __construct(Connection $conn)
     {
-        $this->conn = $conn->getWrappedConnection();
+        $this->conn = $conn;
     }
 
     /**
@@ -31,13 +30,13 @@ class ScopeManager implements ScopeInterface
      * )
      * </code>
      *
-     * @param  string     $scope The scope
+     * @param  string     $scope     The scope
+     * @param  string     $clientId  The client ID
+     * @param  string     $grantType The grant type used in the request
      * @return bool|array If the scope doesn't exist return false
      */
-    public function getScope($scope)
+    public function getScope($scope, $clientId = null, $grantType = null)
     {
-        $stmt = $this->conn->prepare('SELECT * FROM oauth_scopes WHERE scope = ?');
-        $stmt->execute(array($scope));
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->conn->fetchAssoc('SELECT * FROM oauth_scopes WHERE scope = ?', array($scope));
     }
 }

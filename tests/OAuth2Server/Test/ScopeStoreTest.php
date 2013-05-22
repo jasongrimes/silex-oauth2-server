@@ -2,18 +2,16 @@
 
 namespace OAuth2Server\Test;
 
-use OAuth2Server\ScopeManager;
-use Doctrine\DBAL\DriverManager;
+use OAuth2Server\Storage\ScopeStore;
 
-class ScopeManagerTest extends AbstractDbTestCase
+class ScopeStoreTest extends AbstractDbTestCase
 {
-    /** @var ScopeManager */
-    protected $sm;
+    /** @var ScopeStore */
+    protected $store;
 
     public function setUp()
     {
-        $dbal = DriverManager::getConnection(array('pdo' => $this->getPdo()));
-        $this->sm = new ScopeManager($dbal);
+        $this->store = new ScopeStore($this->getDbal());
 
         parent::setUp();
     }
@@ -28,14 +26,14 @@ class ScopeManagerTest extends AbstractDbTestCase
         $stmt = $this->getPdo()->prepare('INSERT INTO oauth_scopes (id, scope, name, description) VALUES (:id, :scope, :name, :description)');
         $stmt->execute(array(':id' => $id, ':scope' => $scope, ':name' => $name, ':description' => $description));
 
-        $result = $this->sm->getScope($scope);
+        $result = $this->store->getScope($scope);
         $this->assertEquals($id, $result['id']);
         $this->assertEquals($scope, $result['scope']);
         $this->assertEquals($name, $result['name']);
         $this->assertEquals($description, $result['description']);
 
         // Test that false is returned if scope doesn't exist
-        $this->assertFalse($this->sm->getScope('non-existent-scope'));
+        $this->assertFalse($this->store->getScope('non-existent-scope'));
     }
 
 }

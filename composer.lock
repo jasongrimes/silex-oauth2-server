@@ -1,5 +1,9 @@
 {
-    "hash": "2c229d680a5867a175d49240e1ef9ee2",
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "be0a8e616c75304393af750d622b880b",
     "packages": [
         {
             "name": "doctrine/common",
@@ -124,30 +128,36 @@
             "time": "2012-04-13 00:56:12"
         },
         {
-            "name": "lncd/Oauth2",
-            "version": "1.0.8",
+            "name": "league/oauth2-server",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/lncd/OAuth2.git",
-                "reference": "1.0.8"
+                "url": "https://github.com/php-loep/oauth2-server.git",
+                "reference": "92b6ce3335610fd7be7fff2dede6a6a9be48dcb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lncd/OAuth2/zipball/1.0.8",
-                "reference": "1.0.8",
+                "url": "https://api.github.com/repos/php-loep/oauth2-server/zipball/92b6ce3335610fd7be7fff2dede6a6a9be48dcb9",
+                "reference": "92b6ce3335610fd7be7fff2dede6a6a9be48dcb9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
+            "replace": {
+                "league/oauth2server": "*",
+                "lncd/oauth2": "*"
+            },
             "require-dev": {
-                "mockery/mockery": ">=0.7.2",
-                "phpunit/phpunit": "*"
+                "mockery/mockery": ">=0.7.2"
+            },
+            "suggest": {
+                "zetacomponents/database": "Allows use of the build in PDO storage classes"
             },
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "OAuth2": "src/"
+                    "League\\OAuth2\\Server": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -162,8 +172,8 @@
                     "role": "Developer"
                 }
             ],
-            "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants",
-            "homepage": "https://github.com/lncd/OAuth2",
+            "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
+            "homepage": "https://github.com/php-loep/oauth2-server",
             "keywords": [
                 "Authentication",
                 "api",
@@ -173,7 +183,7 @@
                 "resource",
                 "server"
             ],
-            "time": "2013-03-18 16:48:38"
+            "time": "2013-05-14 08:00:36"
         }
     ],
     "packages-dev": [
@@ -237,16 +247,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "1.2.9",
+            "version": "1.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "1.2.9"
+                "reference": "1.2.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/1.2.9",
-                "reference": "1.2.9",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/1.2.10",
+                "reference": "1.2.10",
                 "shasum": ""
             },
             "require": {
@@ -286,7 +296,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-02-26 18:55:56"
+            "time": "2013-05-13 05:49:10"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -468,16 +478,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "3.7.19",
+            "version": "3.7.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3.7.19"
+                "reference": "3.7.20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3.7.19",
-                "reference": "3.7.19",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3.7.20",
+                "reference": "3.7.20",
                 "shasum": ""
             },
             "require": {
@@ -491,7 +501,7 @@
                 "phpunit/php-text-template": ">=1.1.1",
                 "phpunit/php-timer": ">=1.0.2,<1.1.0",
                 "phpunit/phpunit-mock-objects": ">=1.2.0,<1.3.0",
-                "symfony/yaml": ">=2.0.0,<2.3.0"
+                "symfony/yaml": ">=2.0,<3.0"
             },
             "require-dev": {
                 "pear-pear/pear": "1.9.4"
@@ -538,7 +548,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-03-25 11:45:06"
+            "time": "2013-05-13 06:06:41"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -591,17 +601,17 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.2.0",
+            "version": "v2.2.1",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "v2.2.0-RC3"
+                "reference": "v2.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/v2.2.0-RC3",
-                "reference": "v2.2.0-RC3",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/v2.2.1",
+                "reference": "v2.2.1",
                 "shasum": ""
             },
             "require": {
@@ -634,16 +644,16 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2013-01-27 16:49:19"
+            "time": "2013-03-23 07:49:54"
         }
     ],
     "aliases": [
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "league/oauth2-server": 20
+    },
     "platform": {
         "php": ">=5.3.0"
     },
